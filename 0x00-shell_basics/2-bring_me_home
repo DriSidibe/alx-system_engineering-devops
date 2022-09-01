@@ -1,2 +1,2 @@
 #!/bin/bash
-id | cut -d" " -f1 | cut -c6- | cut -c2- | cd /home/
+cd /root
