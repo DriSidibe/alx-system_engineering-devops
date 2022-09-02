@@ -1,2 +1,2 @@
 #!/bin/bash
-history | grep cd
+cd --
