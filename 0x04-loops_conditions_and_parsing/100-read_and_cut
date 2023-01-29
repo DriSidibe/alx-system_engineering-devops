@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# displays the content of the file /etc/passwd.
+line_nbr=$(wc -l /etc/passwd | cut -d' ' -f 1)
+file_name="/etc/passwd"
+line_value=""
+i=1
+tmp=""
+while [ $i -le "$line_nbr" ]
+do
+	line_value=$(head -n $i $file_name | tail -n 1)
+	echo "$line_value" > tmp.txt
+	tmp=$(cut -d':' -f 1 tmp.txt)
+	tmp=$tmp":"
+	tmp=$tmp$(cut -d':' -f 3 tmp.txt)
+	tmp=$tmp":"
+	tmp=$tmp$(cut -d':' -f 6 tmp.txt)
+	echo "$tmp"
+	((i++))
+done
+rm tmp.txt
