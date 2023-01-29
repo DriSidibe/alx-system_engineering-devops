@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# displays the content of the file /etc/passwd, using the while loop + IFS.
+line_nbr=$(wc -l /etc/passwd | cut -d' ' -f 1)
+file_name="/etc/passwd"
+line_value=""
+i=1
+oldIFS="$IFS"
+IFS=":"
+while [ $i -le "$line_nbr" ]
+do
+	line_value=$(head -n $i $file_name | tail -n 1)
+	set -- "$line_value"
+	echo "The user $1 is part of the $4 gang, lives in $6 and rides $7. $3's place is protected by the passcode $2, more info about the user here: $1"
+	((i++))
+done
+IFS="$oldIFS"
