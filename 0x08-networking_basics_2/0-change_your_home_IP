@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 cp /etc/hosts ~/hosts.new
-echo "127.0.0.2 localhost" >> /etc/hosts.new
-echo "8.8.8.8 facebook.com" >> /etc/hosts.new
+sed -i -e '$127.0.0.2 localhost' '$8.8.8.8 facebook' /etc/hosts.new
 cat ~/hosts.new > /etc/hosts
