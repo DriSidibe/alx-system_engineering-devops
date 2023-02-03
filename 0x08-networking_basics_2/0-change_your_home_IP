@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-cp /etc/hosts /etc/hosts.old
-echo "127.0.0.2 localhost" >> /etc/hosts
-echo "8.8.8.8 facebook.com" >> /etc/hosts
+cp /etc/hosts ~/hosts.new
+echo "127.0.0.2 localhost" >> /etc/hosts.new
+echo "8.8.8.8 facebook.com" >> /etc/hosts.new
+cat ~/hosts.new > /etc/hosts
