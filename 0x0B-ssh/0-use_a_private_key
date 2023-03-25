@@ -1,4 +1,2 @@
 #!/usr/bin/bash
-
-ssh-copy-id -i ~/.ssh/school ubuntu@54.237.18.239
-ssh ubuntu@54.237.18.239
+ssh ubuntu@104.196.50.234 -i ~/.ssh/school
