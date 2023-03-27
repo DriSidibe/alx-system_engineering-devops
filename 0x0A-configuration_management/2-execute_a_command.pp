@@ -1,5 +1,5 @@
 # kills a process named killmenow.
-zsh:1: command not found: :x
+exec{ 'pkill'
   command  => 'pkill -f killmenow',
   provider => 'shell',
 }
