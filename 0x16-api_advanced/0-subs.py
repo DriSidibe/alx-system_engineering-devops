@@ -5,9 +5,9 @@ Contains the number_of_subscribers function
 
 import requests
 
-def top_ten(subreddit):
-    # Reddit API endpoint for getting the hot posts of a subreddit
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
+def number_of_subscribers(subreddit):
+    # Reddit API endpoint for getting subreddit information
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
 
     # Set a custom User-Agent header to avoid potential issues
     headers = {'User-Agent': 'my_bot/1.0'}
@@ -17,22 +17,22 @@ def top_ten(subreddit):
 
     # Check if the request was successful (status code 200)
     if response.status_code == 200:
-        # Extract the titles from the response JSON
+        # Extract the subscriber count from the response JSON
         try:
             data = response.json()
-            posts = data['data']['children']
-
-            # Print the titles of the first 10 hot posts
-            for post in posts:
-                title = post['data']['title']
-                print(title)
-
+            subscribers = data['data']['subscribers']
+            return subscribers
         except KeyError:
             print("Error: Unable to extract data from the Reddit API response.")
+            return 0
     elif response.status_code == 404:
         print(f"Subreddit '{subreddit}' not found. Please provide a valid subreddit.")
+        return 0
     else:
         print(f"Error: Unable to fetch data from the Reddit API. Status code: {response.status_code}")
+        return 0
 
 # Example usage
-top_ten("python")
+subreddit = "python"
+subscribers_count = number_of_subscribers(subreddit)
+print(f"The number of subscribers for '{subreddit}' is: {subscribers_count}")
