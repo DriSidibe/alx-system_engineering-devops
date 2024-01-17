@@ -26,13 +26,10 @@ def number_of_subscribers(subreddit):
             print("Error: Unable to extract data from the Reddit API response.")
             return 0
     elif response.status_code == 404:
-        print(f"Subreddit '{subreddit}' not found. Please provide a valid subreddit.")
         return 0
     else:
-        print(f"Error: Unable to fetch data from the Reddit API. Status code: {response.status_code}")
         return 0
 
 # Example usage
 subreddit = "python"
 subscribers_count = number_of_subscribers(subreddit)
-print(f"The number of subscribers for '{subreddit}' is: {subscribers_count}")
